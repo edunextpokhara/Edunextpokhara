@@ -1,0 +1,362 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शिक्षा साथी - Tutor Application & Guidelines</title>
+    <style>
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #f39c12;
+            --bg-color: #f4f6f9;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+            color: #ffcc00;
+        }
+
+        header h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 15px;
+            color: #d0e1fd;
+        }
+
+        .badge {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .intro {
+            background: var(--card-bg);
+            border-left: 5px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        h2.section-title {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .steps-container {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-color: var(--secondary);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--secondary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 13px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .step-content {
+            margin-top: 5px;
+        }
+
+        .nepali-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a252f;
+            margin-bottom: 6px;
+        }
+
+        .english-text {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .notice-box {
+            background: #fff9e6;
+            border: 1px solid #ffeeba;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .notice-title {
+            font-weight: bold;
+            color: #856404;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .action-section {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #219653 0%, #27ae60 100%);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #7f8c8d;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        /* Modal Popup Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="badge">शिक्षा साथी</div>
+            <h1>शिक्षा साथी - Home Tuition</h1>
+            <h2>ट्युटर आवेदन प्रक्रिया तथा नियमहरू</h2>
+            <p>Tutor Rules, Terms & Application Process Guide | साथ हाम्रो, सफलता तपाईको</p>
+        </header>
+
+        <div class="intro">
+            <b>Welcome to शिक्षा साथी Home Tuition Network!</b> Please follow the systematic workflow below to complete your application, verification, demo classes, and ongoing teaching responsibilities.
+        </div>
+
+        <h2 class="section-title">Application Workflow & Guidelines (आवेदन र कार्यप्रणाली)</h2>
+
+        <div class="steps-container">
+            <div class="step-card" onclick="highlightStep(1)">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="nepali-text">१. भ्याकेन्सी छनोट (Vacancy Selection)</div>
+                    <div class="english-text">First, carefully review and select the vacancy that best suits your preference and location.</div>
+                </div>
+            </div>
+
+            <div class="step-card" onclick="highlightStep(2)">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="nepali-text">२. आवेदन तथा परिचय प्रमाणीकरण (Application & Identity Verification)</div>
+                    <div class="english-text">Confirm the location and submit your application. Afterwards, verify your identity by uploading your face photo and ID card/Citizenship via the provided link.</div>
+                </div>
+            </div>
+
+            <div class="step-card" onclick="highlightStep(3)">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="nepali-text">३. शुल्क, ठेगाना र डेमो क्लास (Fee Payment & Demo Class)</div>
+                    <div class="english-text">Parent’s contact details will be provided only after paying the specified percentage fee. Following this, a 2-3 day demo class must be conducted.</div>
+                </div>
+            </div>
+
+            <div class="step-card" onclick="highlightStep(4)">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="nepali-text">४. फिर्ता नीति र आचारसंहिता (Refund Policy & Code of Conduct)</div>
+                    <div class="english-text">If rejected during the demo class, the fee will be refunded. However, fees are non-refundable once the demo is approved or if terms are breached (e.g., contacting parents directly outside our channel).</div>
+                </div>
+            </div>
+
+            <div class="step-card" onclick="highlightStep(5)">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="nepali-text">५. परीक्षा र नतिजा पोर्टल (Exams & Result Portal)</div>
+                    <div class="english-text">Tutors must conduct weekly exams, prepare marksheets, upload them to our Result Portal, and submit copies to both parents and शिक्षा साथी.</div>
+                </div>
+            </div>
+
+            <div class="step-card" onclick="highlightStep(6)">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="nepali-text">६. भुक्तानी प्रक्रिया (Payment Process)</div>
+                    <div class="english-text">Tutors must collect their monthly tuition payment directly from the parents.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            <div class="notice-title">⚠️ विशेष सूचना (Important Notice)</div>
+            <div class="nepali-text" style="font-size: 15px;">संस्थाको अनुमति बिना व्यक्तिगत रूपमा अभिभावकसँग पढाउने सम्झौता गरेमा वा अनुशासनहीन काम गरेमा ट्युटरलाई तुरुन्तै हटाइनेछ।</div>
+            <div class="english-text">Direct agreement with parents without organization consent or violation of rules will lead to immediate termination from the platform.</div>
+        </div>
+
+        <div class="action-section">
+            <button class="btn-apply" onclick="openModal()">Apply for Vacancy Now</button>
+        </div>
+
+        <footer>
+            &copy; 2026 शिक्षा साथी (Home Tuition). All Rights Reserved. Professional Tutor Placement & Management System.
+        </footer>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 15px;">Start Application</h2>
+            <p style="margin-bottom: 20px; font-size: 14px; color: #555;">Please review the steps above and make sure you meet all criteria before submitting your details to शिक्षा साथी.</p>
+            <button class="btn-apply" style="padding: 10px 25px; font-size: 14px;" onclick="alert('Redirecting to Application Form...'); closeModal();">Proceed to Form</button>
+        </div>
+    </div>
+
+    <script>
+        function highlightStep(stepNum) {
+            alert("Step " + stepNum + " selected. Please follow this instruction carefully during your application.");
+        }
+
+        function openModal() {
+            document.getElementById('applyModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('applyModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('applyModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
